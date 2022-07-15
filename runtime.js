@@ -102,24 +102,46 @@ let results5Insert = perf.stop();
 // console.log("append", results5Append.preciseWords);
 
 
-// const addtoZero = (arr) => {
-
-// }
-
-const areCharsUnique = (phrase) => {
-    let sortedPhrase = phrase.split("").sort();
-  
-    for (let i = 0; i < sortedPhrase.length; i++) {
-      if (sortedPhrase[i] === sortedPhrase[i + 1]) {
-        return false;
-      } else if (i + 1 === sortedPhrase.length) {
-        return true;
+const addToZero = (arr) => {
+  for (let i=0; i<arr.length; i++) {
+    for (let k=0; k<arr.length; k++){
+      if (i !==k && arr[i] - arr[k] ===0) {
+        return true
       }
     }
-  };
+  }
+  return false
+}
+console.log(addToZero([0, 2, 4, -2]))
+
+perf.start();
+doublerInsert(addToZero);
+let resultsaddToZero = perf.stop();
+
+console.log(`Results for areChars are ${resultsaddToZero.preciseWords}`);
+
+// ////////////////////////////// ////////////////////////////// ////////////////////////////
+const areCharsUnique = (phrase) => {
+  let sortedPhrase = phrase.split("").sort();
+  
+  for (let i = 0; i < sortedPhrase.length; i++) {
+    if (sortedPhrase[i] === sortedPhrase[i + 1]) {
+      return false;
+    } else if (i + 1 === sortedPhrase.length) {
+      return true;
+    }
+  }
+};
 console.log(areCharsUnique("doog"))
 
+perf.start();
+doublerInsert(areCharsUnique);
+let resultsUniqueChars = perf.stop();
 
+console.log(`Results for areChars are ${resultsUniqueChars.preciseWords}`);
+
+
+// ////////////////////////// ////////////////////////// ////////////////////////
 function isPangram(string){
     let strArr = string.toLowerCase();
     let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
@@ -133,6 +155,14 @@ function isPangram(string){
   }
  console.log(isPangram("The quick brown fox jumps over the lazy dog!"));
 
+ perf.start();
+ doublerInsert(isPangram);
+ let resultsisPangram = perf.stop();
+ 
+ console.log(`Results for areChars are ${resultsisPangram.preciseWords}`);
+
+
+// ////////////////////////// ////////////////////////// ////////////////////////
  function findLongestWord(str) {
     var strSplit = str.split(' ');
     var longestWord = 0;
@@ -144,3 +174,9 @@ function isPangram(string){
     return longestWord;
   }
 console.log(findLongestWord("The quick brown fox jumped over the lazy dog"))
+
+perf.start();
+doublerInsert(findLongestWord);
+let resultsfindLongestWord = perf.stop();
+
+console.log(`Results for areChars are ${resultsfindLongestWord.preciseWords}`);
